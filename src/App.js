@@ -1,38 +1,49 @@
 import React, { Component } from 'react';
-import CommonInput from './CommonInput';
-import CommonList from './CommonList';
+import { Router, Route, Link, Switch } from 'react-router-dom';
+import createBrowserHistory from "history/createBrowserHistory";
 
-import logo from './logo.svg';
+import CommonDemo from './Comments/CommentDemo';
+import ReactList from './List/index';
+import ReduxTest from './Redux/index';
+
 import './App.css';
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      comments: []
-    }
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.showOther = this.showOther.bind(this);
   }
 
+  showOther() {
+    return <div> render other </div>
+  }
 
   render() {
+    const history = createBrowserHistory();
     return (
-      <div className="main">
-        <CommonInput onSubmit={this.handleSubmitCommon.bind(this)}/>
-        <CommonList comments={this.state.comments}/>
+      <div className="App">
+        <Router history={history}>
+          <>
+            <div className="left">
+              <ul>
+                <li><Link to="/">JSX</Link></li>
+                <li><Link to="/list">列表</Link></li>
+                <li><Link to="/comment">评论</Link></li>
+                <li><Link to="/todo">TODO</Link></li>
+              </ul>
+            </div>
+            <div className="right">
+              <Switch>
+                <Route path="/" exact component={CommonDemo} />
+                <Route path="/list" exact component={ReactList} />
+                <Route path="/comment" exact component={CommonDemo} />
+                <Route path="/todo" exact component={ReduxTest} />
+                </Switch>
+            </div>
+          </>
+        </Router>
       </div> 
     );
   }
-
-  handleSubmitCommon (commont) {
-    console.log(commont)
-    if(!commont) return
-    if(!commont.username) return alert('请输入用户名')
-    if(!commont.content) return alert('请输入评论')
-    this.state.comments.push(commont);
-    this.setState({
-      comments: this.state.comments
-    })
-  }
 }
 
-export default App;

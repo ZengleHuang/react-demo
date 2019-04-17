@@ -1,0 +1,16 @@
+.jumbotron {
+  padding: 2px 2px;
+  margin-bottom: 2px;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.jumbotron h1 {
+  font-size: 25px;
+}
+
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 200;
+}
