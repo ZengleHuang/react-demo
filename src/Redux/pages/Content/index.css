@@ -20,6 +20,10 @@
   border-top-right-radius: 3px;
 }
 
+.content-heading{
+  width: 15%;
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;

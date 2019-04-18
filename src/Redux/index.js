@@ -92,8 +92,8 @@ export default class ReduxTest extends Component {
             onAction={this.handleAction}
             onRemove={this.handleRemove}
           >
-            <Footer total={list.length} />
           </Content>
+            <Footer total={list.length} />
         </React.Fragment>
       );
     }
